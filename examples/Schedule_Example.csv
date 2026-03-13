@@ -1,0 +1,87 @@
+Timeslot,Start,Category,Event Main Stream,Notes,Event Seminar Stream,Compo Deadline,Publish
+9:00,9:00,DEADLINE,,,,"PC 8K Intro
+Oldskool 4K Intro
+Game
+Fantasy Console",TRUE
+9:15,,,,,,,FALSE
+9:30,,,,,,,FALSE
+9:45,,,,,,,FALSE
+10:00,10:00,SEMINAR,The First Person Project,,,,FALSE
+10:15,,,,,,,FALSE
+10:30,,,,,,,FALSE
+10:45,,,,,,,FALSE
+11:00,11:00,SEMINAR,Emotional laboratory - express and impress yourself with C64 ECHTZEIT tools,,,,FALSE
+11:15,11:00,EVENT,Morning Glory with dojoe & D.Fox,,,,TRUE
+11:30,11:00,EVENT,Hotel Bus Shuttle,,,,TRUE
+11:45,11:30,EVENT,Behind the scenes: Network and power team,,,,TRUE
+12:00,12:00,DEADLINE,,,,Amiga Demo,TRUE
+12:00,12:00,COMPO,Executable Music,,,,TRUE
+12:15,,,,,,,FALSE
+12:30,12:00,COMPO,Streaming Music,,,,TRUE
+12:45,,,,,,,FALSE
+13:00,12:00,COMPO,Modern Graphics,,,,TRUE
+13:15,13:00,EVENT,Hotel Bus Shuttle,,,,TRUE
+13:30,13:30,EVENT,Tour for interested citizens of Saarbrücken,,,,TRUE
+13:45,13:30,EVENT,"Screening of Demoscene documentary ""Hands Deep"" (Seminar Area)",,,,TRUE
+14:00,14:00,DEADLINE,,,,PC Demo,TRUE
+14:15,14:00,EVENT,Behind the scenes: Beamteam (Tour 2),,,,TRUE
+14:30,14:30,COMPO,Entropretty Tattoo Design Compo,,,,TRUE
+14:45,,,,,,,FALSE
+15:00,15:00,SEMINAR,"Well, that Zucked - The Demoscene during (and after?) the Social Media Era",,,,TRUE
+15:15,,,,,,,FALSE
+15:30,,,,,,,FALSE
+15:45,,,,,,,FALSE
+16:00,16:00,COMPO,Fast Music,,,,TRUE
+16:15,16:00,COMPO,4K Executable Graphics,,,,TRUE
+16:30,16:00,COMPO,Oldskool Graphics,,,,TRUE
+16:45,16:00,COMPO,WILD,,,,TRUE
+17:00,16:00,COMPO,Fantasy Console,,,,TRUE
+17:15,16:00,EVENT,Behind the scenes: Seminar team,,,,TRUE
+17:30,,,,,,,FALSE
+17:45,,,,,,,FALSE
+18:00,18:00,COMPO,Animated GIF,,,,TRUE
+18:15,18:00,COMPO,Paintover,,,,TRUE
+18:30,18:00,COMPO,Game,,,,TRUE
+18:45,18:00,COMPO,Oldskool 4K Intro,,,,TRUE
+19:00,,,,,,,FALSE
+19:15,,,,,,,FALSE
+19:30,,,,,,,FALSE
+19:45,,,,,,,FALSE
+20:00,20:00,CONCERT,Lynn Drumm,,,,TRUE
+20:00,20:00,EVENT,Shader Jam for Lynn Drumm,,,,TRUE
+20:15,,,,,,,FALSE
+20:30,,,,,,,FALSE
+20:45,,,,,,,FALSE
+21:00,,,,,,,FALSE
+21:15,,,,,,,FALSE
+21:30,,,,,,,FALSE
+21:45,,,,,,,FALSE
+22:00,22:00,COMPO,PC 8K Intro,,,,TRUE
+22:15,,,,,,,FALSE
+22:30,22:00,COMPO,PC 64K Intro,,,,TRUE
+22:45,,,,,,,FALSE
+23:00,22:00,COMPO,Amiga Demo,,,,TRUE
+23:15,,,,,,,FALSE
+23:30,22:00,COMPO,PC Demo,,,,TRUE
+23:45,,,,,,,FALSE
+0:00,,,,,,,FALSE
+0:15,,,,,,,FALSE
+0:30,,,,,,,FALSE
+0:45,,,,,,,FALSE
+1:00,1:00,EVENT,Night Shuttle,,,,TRUE
+1:15,,,,,,,FALSE
+1:30,,,,,,,FALSE
+1:45,2:00,CONCERT,FUZZY?CATS (2nd Stage),,,,TRUE
+2:00,2:00,EVENT,Night Shuttle,,,,TRUE
+2:15,,,,,,,FALSE
+2:30,2:30,EVENT,Night Shuttle,,,,TRUE
+2:45,,,,,,,FALSE
+3:00,3:00,EVENT,Night Shuttle,,,,TRUE
+3:15,,,,,,,FALSE
+3:30,3:30,EVENT,Night Shuttle,,,,TRUE
+3:45,,,,,,,FALSE
+4:00,4:00,EVENT,Night Shuttle,,,,TRUE
+4:15,,,,,,,FALSE
+4:30,,,,,,,FALSE
+4:45,,,,,,,FALSE
+5:00,5:00,EVENT,Night Shuttle,,,,TRUE

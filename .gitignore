@@ -1,0 +1,9 @@
+node_modules/
+dist/
+data/
+.env
+*.json.tmp
+revision-timetable-*.json
+.DS_Store
+.idea/
+CLAUDE.md

@@ -1,0 +1,563 @@
+{
+  "timetable": [
+    {
+      "day": "FRIDAY",
+      "events": [
+        {
+          "start": "Fri, 03 Apr 2026 10:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Doors open",
+          "publish": true
+        },
+        {
+          "start": "Fri, 03 Apr 2026 16:00:00 GMT",
+          "backgroundColor": "#e5554a",
+          "category": "DEADLINE",
+          "title": "Oldskool Music\nTracked Music\nPhoto\nAnimation/Video\n3D Graphics\n256 Byte Intro\nGame",
+          "publish": true
+        },
+        {
+          "start": "Fri, 03 Apr 2026 17:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Opening ceremony",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Fri, 03 Apr 2026 18:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Announcement of Fast Compos",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Fri, 03 Apr 2026 18:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "The Meteoriks",
+          "publish": true
+        },
+        {
+          "start": "Fri, 03 Apr 2026 20:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Shader Showdown 2026 Qualifications",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Fri, 03 Apr 2026 22:00:00 GMT",
+          "backgroundColor": "#e5554a",
+          "category": "DEADLINE",
+          "title": "Ansi/Ascii/Petscii\n4K Executable Graphics",
+          "publish": true
+        },
+        {
+          "start": "Fri, 03 Apr 2026 23:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Night Shuttle",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 00:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Night Shuttle",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 01:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Night Shuttle",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 02:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Night Shuttle",
+          "publish": true
+        }
+      ]
+    },
+    {
+      "day": "SATURDAY",
+      "events": [
+        {
+          "start": "Sat, 04 Apr 2026 09:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Revision 5k Run",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 09:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Hotel Bus Shuttle",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 09:30:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Behind the scenes: Competition Team",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 10:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Behind the scenes: Main Organizing",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 10:00:00 GMT",
+          "backgroundColor": "#e5554a",
+          "title": "Modern Graphics\nOldskool Graphics\nOldskool Demo\nAmiga Intro\nPC 4K Intro\nAnimated GIF",
+          "category": "DEADLINE",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 10:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "title": "Tracked Music",
+          "category": "COMPO",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 10:30:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Behind the scenes: Network and power team",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 11:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "TIC80 Jam Session",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 11:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Hotel Bus Shuttle",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 13:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Business Forum",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 14:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Behind the scenes: Beamteam (Tour 1)",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 15:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Shader Showdown 2026 Final",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 16:00:00 GMT",
+          "backgroundColor": "#e5554a",
+          "category": "DEADLINE",
+          "title": "Streaming Music\nExecutable Music\nSponsored Compo",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 16:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "title": "Ansi/Ascii/Petscii",
+          "category": "COMPO",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 16:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Oldskool Music",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 16:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Photo",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 16:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "3D Graphics",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 16:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "title": "Animation/Video",
+          "category": "COMPO",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 18:00:00 GMT",
+          "backgroundColor": "#e5554a",
+          "title": "Fast music\nPaintover",
+          "category": "DEADLINE",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 20:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Amiga Intro",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 20:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "PC 4K Intro",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 20:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "title": "256 Byte Intro",
+          "category": "COMPO",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 20:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "title": "Oldskool Demo",
+          "category": "COMPO",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 22:00:00 GMT",
+          "backgroundColor": "#e5554a",
+          "category": "DEADLINE",
+          "title": "WILD\nPC 64K Intro",
+          "publish": true
+        },
+        {
+          "start": "Sat, 04 Apr 2026 23:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Night Shuttle",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 00:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Night Shuttle",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 01:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Night Shuttle",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 02:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Night Shuttle",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 03:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Night Shuttle",
+          "publish": true
+        }
+      ]
+    },
+    {
+      "day": "SUNDAY",
+      "events": [
+        {
+          "start": "Sun, 05 Apr 2026 07:00:00 GMT",
+          "backgroundColor": "#e5554a",
+          "category": "DEADLINE",
+          "title": "PC 8K Intro\nOldskool 4K Intro\nFantasy Console",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 09:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Morning Glory with dojoe & D.Fox",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 09:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Hotel Bus Shuttle",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 09:30:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Behind the scenes: Infodesk",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 10:00:00 GMT",
+          "backgroundColor": "#e5554a",
+          "title": "Amiga Demo",
+          "category": "DEADLINE",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 10:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Executable Music",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 10:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "title": "Streaming Music",
+          "category": "COMPO",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 10:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "title": "Modern Graphics",
+          "category": "COMPO",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 11:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Hotel Bus Shuttle",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 11:30:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Tour for interested citizens of Saarbrücken",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 12:00:00 GMT",
+          "backgroundColor": "#e5554a",
+          "title": "PC Demo",
+          "category": "DEADLINE",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 12:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Behind the scenes: Beamteam (Tour 2)",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 14:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Fast Music",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 14:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "4K Executable Graphics",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 14:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Oldskool Graphics",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 14:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "WILD",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 14:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Fantasy Console",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 14:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Behind the scenes: Seminar team",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 16:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Animated GIF",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 16:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Paintover",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 16:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Game",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 16:00:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Oldskool 4K Intro",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 19:30:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "PC 8K Intro",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 19:30:00 GMT",
+          "backgroundColor": "#63a848",
+          "title": "PC 64K Intro",
+          "category": "COMPO",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 19:30:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "Amiga Demo",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 19:30:00 GMT",
+          "backgroundColor": "#63a848",
+          "category": "COMPO",
+          "title": "PC Demo",
+          "publish": true
+        },
+        {
+          "start": "Sun, 05 Apr 2026 23:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Night Shuttle",
+          "publish": true
+        },
+        {
+          "start": "Mon, 06 Apr 2026 00:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Night Shuttle",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Mon, 06 Apr 2026 00:30:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Night Shuttle",
+          "publish": true
+        },
+        {
+          "start": "Mon, 06 Apr 2026 01:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Night Shuttle",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Mon, 06 Apr 2026 01:30:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Night Shuttle",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Mon, 06 Apr 2026 02:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Night Shuttle",
+          "publish": true
+        },
+        {
+          "start": "Mon, 06 Apr 2026 03:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "category": "EVENT",
+          "title": "Night Shuttle",
+          "publish": true
+        }
+      ]
+    },
+    {
+      "day": "MONDAY",
+      "events": [
+        {
+          "start": "Mon, 06 Apr 2026 08:00:00 GMT",
+          "backgroundColor": "#e5554a",
+          "title": "Voting",
+          "category": "DEADLINE",
+          "publish": true
+        },
+        {
+          "start": "Mon, 06 Apr 2026 08:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Hotel Bus Shuttle",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Mon, 06 Apr 2026 09:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Prizegiving",
+          "category": "EVENT",
+          "publish": true
+        },
+        {
+          "start": "Mon, 06 Apr 2026 11:00:00 GMT",
+          "backgroundColor": "#fad028",
+          "title": "Doors close",
+          "category": "EVENT",
+          "publish": true
+        }
+      ]
+    }
+  ]
+}

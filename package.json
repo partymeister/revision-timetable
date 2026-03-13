@@ -1,0 +1,24 @@
+{
+  "name": "revision-timetable",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test:fetch": "ts-node -r dotenv/config scripts/test-fetch.ts",
+    "test:transform": "ts-node -r dotenv/config scripts/test-transform.ts",
+    "test:poll": "ts-node -r dotenv/config scripts/test-poll.ts"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "googleapis": "^144.0.0",
+    "ssf": "https://cdn.sheetjs.com/ssf-0.11.3/ssf-0.11.3.tgz"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.0.0",
+    "dotenv": "^16.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.5.0"
+  }
+}
