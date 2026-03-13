@@ -2,6 +2,7 @@ import { google } from 'googleapis';
 
 export interface SheetData {
   day: string;
+  timezone: string;
   rows: unknown[][];
 }
 
@@ -14,8 +15,11 @@ export async function fetchAllSheets(spreadsheetId: string): Promise<SheetData[]
 
   const meta = await sheets.spreadsheets.get({
     spreadsheetId,
-    fields: 'sheets.properties.title',
+    fields: 'sheets.properties.title,sheets.properties.title',
   });
+
+  const timezone = meta.data.properties?.timeZone ?? 'UTC';
+  console.log(timezone);
 
   const DAY_NAMES = new Set(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']);
   const titles = (meta.data.sheets ?? [])
@@ -32,6 +36,7 @@ export async function fetchAllSheets(spreadsheetId: string): Promise<SheetData[]
 
   return titles.map((day, i) => ({
     day,
+    timezone,
     rows: response.data.valueRanges?.[i]?.values ?? [],
   }));
 }

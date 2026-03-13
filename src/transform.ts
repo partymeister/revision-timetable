@@ -1,5 +1,6 @@
 import SSF from 'ssf';
-import { SheetData } from './sheets';
+import {SheetData} from './sheets';
+import { DateTime } from "luxon";
 
 const CATEGORY_COLORS: Record<string, string> = {
   EVENT: '#fad028',
@@ -25,11 +26,18 @@ export interface Timetable {
   timetable: DayEntry[];
 }
 
-function serialToRFC2822(serial: number): string {
+function serialToISO(serial: number): string {
   // SSF interprets the serial in the local timezone of the JS client.
-  // In the UTC container this produces the correct GMT string directly.
-  const formatted = SSF.format('yyyy-mm-dd hh:mm:ss', serial);
-  return new Date(formatted).toUTCString();
+  console.log('###');
+  const formattedDate = SSF.format(`yyyy-mm-dd\\Thh:mm:ss`, serial);
+  console.log('formattedDate: ' + formattedDate);
+  console.log('~~~');
+  const luxonDate = DateTime.fromISO(formattedDate, { zone: "Europe/Berlin" });
+  console.log('luxonDate: ' + luxonDate.toISO());
+  const finalDate = luxonDate.toUTC();
+  console.log('finalDate: ' + finalDate.toISO());
+  console.log(' ');
+  return <string>finalDate.toISO();
 }
 
 export function transform(sheets: SheetData[]): Timetable {
@@ -47,7 +55,7 @@ export function transform(sheets: SheetData[]): Timetable {
               : String(row[3] ?? '');
 
           return {
-            start: serialToRFC2822(row[1] as number),
+            start: serialToISO(row[1] as number),
             backgroundColor: CATEGORY_COLORS[category] ?? '#cccccc',
             category,
             title,
