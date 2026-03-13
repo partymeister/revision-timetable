@@ -5,7 +5,7 @@ import { pollAndWrite } from '../src/poller';
 const SHEET_ID = process.env.SHEET_ID;
 if (!SHEET_ID) throw new Error('SHEET_ID not set');
 
-const OUTPUT_PATH = path.resolve(__dirname, '../examples/output.json');
+const OUTPUT_PATH = path.resolve(__dirname, '../data/timetable-test.json');
 
 (async () => {
   console.log(`Writing output to: ${OUTPUT_PATH}\n`);
