@@ -12,6 +12,14 @@ if (!WEBHOOK_SECRET) throw new Error('WEBHOOK_SECRET env var is required');
 const app = express();
 app.use(express.json());
 
+app.get('/timetable.json', (_req, res) => {
+  res.sendFile(OUTPUT_PATH, (err) => {
+    if (err) {
+      res.status(404).json({ error: 'Timetable not yet generated' });
+    }
+  });
+});
+
 app.post('/webhook', (req, res) => {
   if (req.headers['x-webhook-secret'] !== WEBHOOK_SECRET) {
     res.status(401).json({ error: 'Unauthorized' });
