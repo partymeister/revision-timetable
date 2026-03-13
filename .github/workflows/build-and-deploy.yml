@@ -1,0 +1,65 @@
+name: build-k8s-timetable
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-app:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push app image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          platforms: linux/amd64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            dfox288/revision-timetable:latest
+            dfox288/revision-timetable:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy-k8s:
+    needs: build-app
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Trigger k8s deploy
+        run: |
+          eval $(ssh-agent -s)
+          ssh-add - <<< '${{ secrets.TUM_REVISION_K8S_PRIVATE_KEY }}'
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git clone git@github.com:dfox288/tum-cluster-revision-websites_k8s.git manifests
+          cd manifests
+
+          sed -i "s|dfox288/revision-timetable:.*|dfox288/revision-timetable:${{ github.sha }}|g" \
+            timetable.revision-party.net/revision-timetable-deployment.yaml
+
+          git config --global user.email "info@tastatur-und-maus.net"
+          git config --global user.name "${{ github.repository_owner }}"
+          git add --all
+          git diff --cached --quiet && echo "No changes to deploy" && exit 0
+          git commit -m "deploy ${{ github.repository }}:${{ github.sha }}"
+          git push -u origin main
