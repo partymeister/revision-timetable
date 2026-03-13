@@ -26,18 +26,9 @@ export interface Timetable {
   timetable: DayEntry[];
 }
 
-function serialToISO(serial: number): string {
-  // SSF interprets the serial in the local timezone of the JS client.
-  console.log('###');
+function serialToISO(serial: number, timezone: string): string {
   const formattedDate = SSF.format(`yyyy-mm-dd\\Thh:mm:ss`, serial);
-  console.log('formattedDate: ' + formattedDate);
-  console.log('~~~');
-  const luxonDate = DateTime.fromISO(formattedDate, { zone: "Europe/Berlin" });
-  console.log('luxonDate: ' + luxonDate.toISO());
-  const finalDate = luxonDate.toUTC();
-  console.log('finalDate: ' + finalDate.toISO());
-  console.log(' ');
-  return <string>finalDate.toISO();
+  return DateTime.fromISO(formattedDate, { zone: timezone }).toUTC().toISO() as string;
 }
 
 export function transform(sheets: SheetData[]): Timetable {
@@ -55,7 +46,7 @@ export function transform(sheets: SheetData[]): Timetable {
               : String(row[3] ?? '');
 
           return {
-            start: serialToISO(row[1] as number),
+            start: serialToISO(row[1] as number, sheet.timezone),
             backgroundColor: CATEGORY_COLORS[category] ?? '#cccccc',
             category,
             title,

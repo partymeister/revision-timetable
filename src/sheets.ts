@@ -15,11 +15,10 @@ export async function fetchAllSheets(spreadsheetId: string): Promise<SheetData[]
 
   const meta = await sheets.spreadsheets.get({
     spreadsheetId,
-    fields: 'sheets.properties.title,sheets.properties.title',
+    fields: 'sheets.properties.title,properties.timeZone',
   });
 
-  const timezone = meta.data.properties?.timeZone ?? 'UTC';
-  console.log(timezone);
+  const timezone = meta.data.properties?.timeZone ?? 'Europe/Berlin';
 
   const DAY_NAMES = new Set(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']);
   const titles = (meta.data.sheets ?? [])

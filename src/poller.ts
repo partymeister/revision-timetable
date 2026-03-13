@@ -10,7 +10,7 @@ export async function pollAndWrite(sheetId: string, outputPath: string): Promise
     const tmpPath = outputPath + '.tmp';
     await fs.writeFile(tmpPath, json, 'utf8');
     await fs.rename(tmpPath, outputPath);
-    console.log(`[${new Date().toISOString()}] timetable.json updated (${sheets.length} days)`);
+    console.log(`[${new Date().toISOString()}] timetable.json successfully updated`);
   } catch (err) {
     console.error(`[${new Date().toISOString()}] Poll failed:`, err);
   }
