@@ -37,12 +37,12 @@ export function transform(sheets: SheetData[]): Timetable {
       const dataRows = sheet.rows.slice(1); // skip header row
 
       const events: TimetableEvent[] = dataRows
-        .filter(row => typeof row[1] === 'number' && row[7] === true)
+        .filter(row => typeof row[1] === 'number' && row[6] === true)
         .map(row => {
           const category = String(row[2] ?? '');
           const title =
             category === 'DEADLINE'
-              ? String(row[6] ?? '')
+              ? String(row[5] ?? '')
               : String(row[3] ?? '');
 
           return {

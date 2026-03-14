@@ -29,7 +29,7 @@ export async function fetchAllSheets(spreadsheetId: string): Promise<SheetData[]
 
   const response = await sheets.spreadsheets.values.batchGet({
     spreadsheetId,
-    ranges: titles.map(title => `${title}!A:H`),
+    ranges: titles.map(title => `${title}!A:G`),
     valueRenderOption: 'UNFORMATTED_VALUE',
   });
 
