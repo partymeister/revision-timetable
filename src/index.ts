@@ -12,6 +12,10 @@ if (!WEBHOOK_SECRET) throw new Error('WEBHOOK_SECRET env var is required');
 const app = express();
 app.use(express.json());
 
+app.get('/status', (_req, res) => {
+  res.json({ status: 'ok', commit: process.env.GIT_COMMIT ?? 'unknown' });
+});
+
 app.get('/timetable.json', (_req, res) => {
   res.sendFile(OUTPUT_PATH, (err) => {
     if (err) {

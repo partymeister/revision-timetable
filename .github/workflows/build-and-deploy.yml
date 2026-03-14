@@ -33,6 +33,7 @@ jobs:
           context: .
           file: Dockerfile
           platforms: linux/amd64
+          build-args: GIT_COMMIT=${{ github.sha }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             dfox288/revision-timetable:latest
