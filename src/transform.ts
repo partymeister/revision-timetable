@@ -15,6 +15,7 @@ interface TimetableEvent {
   backgroundColor: string;
   category: string;
   title: string;
+  recorded?: boolean;
 }
 
 interface DayEntry {
@@ -45,12 +46,18 @@ export function transform(sheets: SheetData[]): Timetable {
               ? String(row[5] ?? '')
               : String(row[3] ?? '');
 
-          return {
+          const event: TimetableEvent = {
             start: serialToISO(row[1] as number, sheet.timezone),
             backgroundColor: CATEGORY_COLORS[category] ?? '#cccccc',
             category,
             title,
           };
+
+          if (category === 'EVENT') {
+            event.recorded = row[7] === true;
+          }
+
+          return event;
         });
 
       return {
