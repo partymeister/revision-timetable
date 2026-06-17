@@ -1,4 +1,9 @@
 name: build-k8s-timetable
+# Keyless CI: no stored DOCKERHUB_TOKEN, no SSH write-back key. Fetches the
+# Docker Hub push token + the revision-k8s-deploy GitHub App key (owned by
+# dfox288, installed on the manifests repo) from tum Infisical (project
+# revision-websites-ci) via GitHub OIDC. This repo lives in the partymeister
+# org, so the App token explicitly targets owner=dfox288.
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -7,12 +12,30 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write   # OIDC -> Infisical (DH push creds + GitHub App key)
 
 jobs:
   build-app:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v5
+
+      - name: Fetch creds from Infisical (OIDC, no stored token)
+        uses: Infisical/secrets-action@v1.0.7
+        with:
+          method: oidc
+          domain: https://secrets.tastatur-und-maus.net
+          identity-id: ${{ secrets.INFISICAL_IDENTITY_ID }}
+          project-slug: ${{ secrets.INFISICAL_PROJECT_SLUG }}
+          env-slug: prod
+          secret-path: /
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -21,11 +44,10 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
-        if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ env.DOCKERHUB_PUSH_TOKEN }}
 
       - name: Build and push app image
         uses: docker/build-push-action@v6
@@ -34,7 +56,7 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64
           build-args: GIT_COMMIT=${{ github.sha }}
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: |
             dfox288/revision-timetable:latest
             dfox288/revision-timetable:${{ github.sha }}
@@ -43,24 +65,50 @@ jobs:
 
   deploy-k8s:
     needs: build-app
-    if: github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - name: Trigger k8s deploy
+      - name: Fetch GitHub App key from Infisical (OIDC)
+        uses: Infisical/secrets-action@v1.0.7
+        with:
+          method: oidc
+          domain: https://secrets.tastatur-und-maus.net
+          identity-id: ${{ secrets.INFISICAL_IDENTITY_ID }}
+          project-slug: ${{ secrets.INFISICAL_PROJECT_SLUG }}
+          env-slug: prod
+          secret-path: /
+
+      - name: Mint short-lived GitHub App token for the manifests repo
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ env.GH_APP_ID }}
+          private-key: ${{ env.GH_APP_PRIVATE_KEY }}
+          owner: dfox288
+          repositories: tum-cluster-revision-websites_k8s
+
+      - name: Bump image SHA in the manifests repo
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          DOCKER_REPO: dfox288/revision-timetable
+          MANIFESTS_REPO: dfox288/tum-cluster-revision-websites_k8s
+          MANIFEST_FILES: timetable.revision-party.net/revision-timetable-deployment.yaml
         run: |
-          eval $(ssh-agent -s)
-          ssh-add - <<< '${{ secrets.TUM_REVISION_K8S_PRIVATE_KEY }}'
-          mkdir -p ~/.ssh
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git clone git@github.com:dfox288/tum-cluster-revision-websites_k8s.git manifests
+          set -euo pipefail
+          git clone --depth 1 \
+            "https://x-access-token:${GH_TOKEN}@github.com/${MANIFESTS_REPO}.git" manifests
           cd manifests
-
-          sed -i "s|dfox288/revision-timetable:.*|dfox288/revision-timetable:${{ github.sha }}|g" \
-            timetable.revision-party.net/revision-timetable-deployment.yaml
-
-          git config --global user.email "info@tastatur-und-maus.net"
-          git config --global user.name "${{ github.repository_owner }}"
+          for file in $MANIFEST_FILES; do
+            sed -i "s|${DOCKER_REPO}:.*|${DOCKER_REPO}:${GITHUB_SHA}|g" "$file"
+          done
+          git config user.email "info@tastatur-und-maus.net"
+          git config user.name  "revision-deploy-bot"
           git add --all
-          git diff --cached --quiet && echo "No changes to deploy" && exit 0
-          git commit -m "deploy ${{ github.repository }}:${{ github.sha }}"
-          git push -u origin main
+          if git diff --cached --quiet; then
+            echo "[deploy] manifest already at ${GITHUB_SHA} — nothing to push"
+            exit 0
+          fi
+          git commit -m "deploy ${DOCKER_REPO}:${GITHUB_SHA}"
+          git push
