@@ -1,0 +1,32 @@
+# Weekly GHCR retention: keep the newest 20 tagged versions of each package, delete untagged ones
+# (tum-cluster_k8s#78, D-142). dataaxiom/ghcr-cleanup-action is index-aware: the untagged children of a kept
+# multi-arch index (attestation-manifest, per-platform manifests) stay. Run it by hand with dry-run on first.
+name: ghcr-retention
+
+on:
+  schedule:
+    - cron: "35 5 * * 1"
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: "Only log what would be deleted"
+        type: boolean
+        default: true
+
+permissions:
+  packages: write
+
+concurrency:
+  group: ghcr-retention
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dataaxiom/ghcr-cleanup-action@d52806a0dc70b430571a37da1fde39733ffd640f # v1.2.2
+        with:
+          packages: revision-timetable
+          keep-n-tagged: 20
+          delete-untagged: true
+          validate: true
+          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run || false }}
