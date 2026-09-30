@@ -17,6 +17,7 @@ on:
 permissions:
   contents: read
   id-token: write   # OIDC -> Infisical (DH push creds + GitHub App key)
+  packages: write   # GITHUB_TOKEN pushes to ghcr.io (dfox288/tum-cluster_k8s#78)
 
 jobs:
   build-app:
@@ -24,6 +25,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
+      packages: write
     steps:
       - uses: actions/checkout@v5
 
@@ -49,6 +51,13 @@ jobs:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ env.DOCKERHUB_PUSH_TOKEN }}
 
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build and push app image
         uses: docker/build-push-action@v6
         with:
@@ -60,6 +69,8 @@ jobs:
           tags: |
             dfox288/revision-timetable:latest
             dfox288/revision-timetable:${{ github.sha }}
+            ghcr.io/partymeister/revision-timetable:latest
+            ghcr.io/partymeister/revision-timetable:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -92,16 +103,26 @@ jobs:
       - name: Bump image SHA in the manifests repo
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
-          DOCKER_REPO: dfox288/revision-timetable
+          DOCKER_REPO: revision-timetable   # matched after the registry/owner prefix, which the manifest line keeps
           MANIFESTS_REPO: dfox288/tum-cluster-revision-websites_k8s
           MANIFEST_FILES: timetable.revision-party.net/revision-timetable-deployment.yaml
         run: |
           set -euo pipefail
-          git clone --depth 1 \
-            "https://x-access-token:${GH_TOKEN}@github.com/${MANIFESTS_REPO}.git" manifests
+          # A freshly minted, repo-scoped App token sometimes answers "Repository not found" for a few
+          # seconds (dfox288/tum-cluster_k8s#103): retry the clone and the push.
+          for attempt in 1 2 3 4 5; do
+            if git clone --depth 1 \
+              "https://x-access-token:${GH_TOKEN}@github.com/${MANIFESTS_REPO}.git" manifests; then
+              break
+            fi
+            if [ "$attempt" = 5 ]; then echo "[deploy] clone failed after 5 attempts"; exit 1; fi
+            echo "[deploy] clone attempt ${attempt} failed (token scope lag?), retrying in 10s"
+            rm -rf manifests
+            sleep 10
+          done
           cd manifests
           for file in $MANIFEST_FILES; do
-            sed -i "s|${DOCKER_REPO}:.*|${DOCKER_REPO}:${GITHUB_SHA}|g" "$file"
+            sed -i "s|/${DOCKER_REPO}:.*|/${DOCKER_REPO}:${GITHUB_SHA}|g" "$file"
           done
           git config user.email "info@tastatur-und-maus.net"
           git config user.name  "revision-deploy-bot"
@@ -111,4 +132,9 @@ jobs:
             exit 0
           fi
           git commit -m "deploy ${DOCKER_REPO}:${GITHUB_SHA}"
-          git push
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin main && git push origin main; then break; fi
+            if [ "$attempt" = 5 ]; then echo "[deploy] push failed after 5 attempts"; exit 1; fi
+            echo "[deploy] push attempt ${attempt} failed (token scope lag?), retrying in 10s"
+            sleep 10
+          done
