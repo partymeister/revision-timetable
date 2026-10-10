@@ -1,0 +1,14 @@
+# Dependabot keeps the SHA-pinned GitHub Actions current: one grouped PR a month,
+# releases younger than 7 days are held back (dfox288/tum-cluster_k8s#137).
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns:
+          - "*"
